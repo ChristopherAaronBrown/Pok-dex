@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8390411E1E2C32AA00ECEDF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8390411D1E2C32AA00ECEDF2 /* Constants.swift */; };
 		839A89A51E2B6353007C1F70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A89A41E2B6353007C1F70 /* AppDelegate.swift */; };
 		839A89A71E2B6353007C1F70 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839A89A61E2B6353007C1F70 /* MainVC.swift */; };
 		839A89AA1E2B6353007C1F70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 839A89A81E2B6353007C1F70 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		0A62088367D81CE062F685C6 /* Pods-Pokédex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokédex.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pokédex/Pods-Pokédex.release.xcconfig"; sourceTree = "<group>"; };
+		8390411D1E2C32AA00ECEDF2 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		839A89A11E2B6353007C1F70 /* Pokédex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pokédex.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		839A89A41E2B6353007C1F70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		839A89A61E2B6353007C1F70 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				839A89C31E2B7C16007C1F70 /* CSVParser.swift */,
+				8390411D1E2C32AA00ECEDF2 /* Constants.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				839A89CC1E2C07A7007C1F70 /* PokémonDetailVC.swift in Sources */,
 				839A89A51E2B6353007C1F70 /* AppDelegate.swift in Sources */,
 				839A89BF1E2B71B4007C1F70 /* PokédexCell.swift in Sources */,
+				8390411E1E2C32AA00ECEDF2 /* Constants.swift in Sources */,
 				839A89BA1E2B6931007C1F70 /* Pokémon.swift in Sources */,
 				839A89C41E2B7C16007C1F70 /* CSVParser.swift in Sources */,
 			);

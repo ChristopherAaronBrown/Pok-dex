@@ -20,19 +20,36 @@ class PokémonDetailVC: UIViewController {
     @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var defenseLabel: UILabel!
     @IBOutlet weak var currentEvoImage: UIImageView!
-    @IBOutlet weak var currentEvoLVLLabel: UILabel!
     @IBOutlet weak var nextEvoImage: UIImageView!
-    @IBOutlet weak var nextEvoLVLLabel: UILabel!
+    @IBOutlet weak var hasNextEvoLabel: UILabel!
     
     var pokémon: Pokémon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.text = pokémon.name.capitalized
+        pokémon.downloadPokémonDetails {
+            self.updateDetails()
+        }
+    }
+    
+    func updateDetails() {
+        nameLabel.text = pokémon.name
+        descriptionLabel.text = pokémon.description
+        pokédexIDLabel.text = "\(pokémon.pokédexID)"
+        typeLabel.text = pokémon.type
+        heightLabel.text = pokémon.height
+        weightLabel.text = pokémon.weight
+        attackLabel.text = pokémon.attack
+        defenseLabel.text = pokémon.defense
+        mainImage.image = UIImage(named: "\(pokémon.pokédexID)")
+        currentEvoImage.image = UIImage(named: "\(pokémon.pokédexID)")
+        nextEvoImage.image = UIImage(named: "\(pokémon.nextEvoPokédexID)")
+        hasNextEvoLabel.text = pokémon.nextEvoPokédexID == 0 ? "No Evolution" : "Next Evolution"
     }
 
     @IBAction func backPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
 }
