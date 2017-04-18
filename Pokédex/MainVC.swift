@@ -13,6 +13,7 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     @IBOutlet weak var pokédexCollection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var musicButton: UIButton!
     
     var pokémon = [Pokémon]()
     var filteredPokémon = [Pokémon]()
@@ -38,7 +39,15 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             musicPlayer = try AVAudioPlayer(contentsOf: audioPath!)
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = -1
-            musicPlayer.play()
+            
+            if UserDefaults.standard.bool(forKey: "playMusic") {
+                musicPlayer.play()
+                musicButton.alpha = 1.0
+            } else {
+                musicPlayer.pause()
+                musicButton.alpha = 0.2
+            }
+            
         } catch let err as NSError {
             print("Trouble playing music. Error: \(err.debugDescription)")
         }
@@ -105,9 +114,11 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     @IBAction func musicPressed(_ sender: UIButton) {
         if musicPlayer.isPlaying {
+            UserDefaults.standard.set(false, forKey: "playMusic")
             musicPlayer.pause()
             sender.alpha = 0.2
         } else {
+            UserDefaults.standard.set(true, forKey: "playMusic")
             musicPlayer.play()
             sender.alpha = 1.0
         }

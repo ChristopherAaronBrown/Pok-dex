@@ -67,6 +67,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		833F09D51EA6C01700E7443D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				839A89A81E2B6353007C1F70 /* Main.storyboard */,
+				839A89AD1E2B6353007C1F70 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		839A89981E2B6353007C1F70 = {
 			isa = PBXGroup;
 			children = (
@@ -88,48 +97,45 @@
 		839A89A31E2B6353007C1F70 /* Pokédex */ = {
 			isa = PBXGroup;
 			children = (
-				839A89B81E2B6924007C1F70 /* Model */,
-				839A89BD1E2B7186007C1F70 /* View */,
-				839A89C01E2B7359007C1F70 /* Controller */,
 				839A89C51E2BF37B007C1F70 /* Resources */,
 				839A89C61E2BF39C007C1F70 /* Utilities */,
-				839A89A41E2B6353007C1F70 /* AppDelegate.swift */,
-				839A89A81E2B6353007C1F70 /* Main.storyboard */,
-				839A89AB1E2B6353007C1F70 /* Assets.xcassets */,
-				839A89AD1E2B6353007C1F70 /* LaunchScreen.storyboard */,
-				839A89B01E2B6353007C1F70 /* Info.plist */,
+				839A89B81E2B6924007C1F70 /* Models */,
+				839A89BD1E2B7186007C1F70 /* Views */,
+				839A89C01E2B7359007C1F70 /* Controllers */,
+				833F09D51EA6C01700E7443D /* Storyboards */,
 			);
 			path = "Pokédex";
 			sourceTree = "<group>";
 		};
-		839A89B81E2B6924007C1F70 /* Model */ = {
+		839A89B81E2B6924007C1F70 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				839A89B91E2B6931007C1F70 /* Pokémon.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
-		839A89BD1E2B7186007C1F70 /* View */ = {
+		839A89BD1E2B7186007C1F70 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				839A89BE1E2B71B4007C1F70 /* PokédexCell.swift */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
-		839A89C01E2B7359007C1F70 /* Controller */ = {
+		839A89C01E2B7359007C1F70 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				839A89A61E2B6353007C1F70 /* MainVC.swift */,
 				839A89CB1E2C07A7007C1F70 /* PokémonDetailVC.swift */,
 			);
-			name = Controller;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		839A89C51E2BF37B007C1F70 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				839A89AB1E2B6353007C1F70 /* Assets.xcassets */,
 				839A89BB1E2B6EB6007C1F70 /* Pokemon GB.ttf */,
 				839A89C71E2BF441007C1F70 /* Pokemon Solid.ttf */,
 				839A89B61E2B6808007C1F70 /* pokémon.csv */,
@@ -141,6 +147,8 @@
 		839A89C61E2BF39C007C1F70 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				839A89B01E2B6353007C1F70 /* Info.plist */,
+				839A89A41E2B6353007C1F70 /* AppDelegate.swift */,
 				839A89C31E2B7C16007C1F70 /* CSVParser.swift */,
 				8390411D1E2C32AA00ECEDF2 /* Constants.swift */,
 			);
@@ -190,7 +198,7 @@
 				TargetAttributes = {
 					839A89A01E2B6353007C1F70 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = V7QG22YHNG;
+						DevelopmentTeam = 4XT2VA5V66;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -259,7 +267,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A53881F82B4C23DCBF566F45 /* [CP] Copy Pods Resources */ = {
@@ -413,12 +421,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7QG22YHNG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4XT2VA5V66;
 				INFOPLIST_FILE = "Pokédex/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisbrown.Poke-dex";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.christopheraaronbrown.poke-dex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -428,12 +440,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V7QG22YHNG;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4XT2VA5V66;
 				INFOPLIST_FILE = "Pokédex/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisbrown.Poke-dex";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.christopheraaronbrown.poke-dex";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
