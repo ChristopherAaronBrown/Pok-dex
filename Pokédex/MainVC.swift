@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class MainVC: UIViewController {
 
     @IBOutlet weak var pokédexCollection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -72,24 +72,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokédexCell", for: indexPath) as? PokédexCell {
-            
-            let pokémon = isSearching ? filteredPokémon[indexPath.row] : self.pokémon[indexPath.row]
-            
-            cell.configureCell(pokémon: pokémon)
-            
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let pokémon = isSearching ? filteredPokémon[indexPath.row] : self.pokémon[indexPath.row]
-        performSegue(withIdentifier: "PokémonDetailVC", sender: pokémon)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PokémonDetailVC" {
             if let destination = segue.destination as? PokémonDetailVC {
@@ -98,18 +80,6 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 }
             }
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isSearching ? filteredPokémon.count : pokémon.count
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
     }
     
     @IBAction func musicPressed(_ sender: UIButton) {
@@ -123,7 +93,45 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             sender.alpha = 1.0
         }
     }
+}
+
+extension MainVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pokémon = isSearching ? filteredPokémon[indexPath.row] : self.pokémon[indexPath.row]
+        performSegue(withIdentifier: "PokémonDetailVC", sender: pokémon)
+    }
+}
+
+extension MainVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return isSearching ? filteredPokémon.count : pokémon.count
+    }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokédexCell", for: indexPath) as? PokédexCell {
+            
+            let pokémon = isSearching ? filteredPokémon[indexPath.row] : self.pokémon[indexPath.row]
+            
+            cell.configureCell(pokémon: pokémon)
+            
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
+    }
+}
+
+extension MainVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+}
+
+extension MainVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
@@ -139,6 +147,4 @@ class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         pokédexCollection.reloadData()
     }
-    
 }
-

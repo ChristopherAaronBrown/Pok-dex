@@ -1,5 +1,5 @@
 //
-//  Constants.swift
+//  Constant.swift
 //  Pokédex
 //
 //  Created by Chris Brown on 1/15/17.
